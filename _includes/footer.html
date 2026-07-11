@@ -1,0 +1,43 @@
+<!-- ============================================================ -->
+<!-- footer.html - FOOTER SECTION                                 -->
+<!-- Included in default layout so it appears on every page.      -->
+<!-- Contains quick links, social, and copyright.                 -->
+<!-- ============================================================ -->
+
+<footer class="site-footer">
+  <div class="footer-grid">
+
+    <!-- QUICK LINKS COLUMN -->
+    <div class="footer-col">
+      <h3 class="footer-heading">Quick Links</h3>
+      <ul class="footer-links">
+        <li><a href="{{ '/' | relative_url }}">Home</a></li>
+        <li><a href="{{ '/articles/' | relative_url }}">Articles</a></li>
+        <li><a href="{{ '/resources/' | relative_url }}">Resources</a></li>
+        <li><a href="{{ '/videos/' | relative_url }}">Videos</a></li>
+      </ul>
+    </div>
+
+    <!-- FOLLOW US COLUMN -->
+    <div class="footer-col">
+      <h3 class="footer-heading">Follow Us</h3>
+      <ul class="footer-links">
+        <!-- YouTube link uses the variable from _config.yml -->
+        <li><a href="{{ site.youtube_channel_url }}" target="_blank">YouTube</a></li>
+      </ul>
+    </div>
+
+    <!-- COPYRIGHT COLUMN -->
+    <div class="footer-col">
+      <h3 class="footer-heading">Copyright</h3>
+      <p>&copy; 2026 {{ site.title }}</p>
+      <p>All Rights Reserved.</p>
+      <!-- Privacy and Terms are placeholder pages you can create later -->
+      <div class="legal-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
