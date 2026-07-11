@@ -13,7 +13,7 @@ description: "Finance guide & resources - Master your money like you mastered yo
 # Replace 'yourusername' with your actual GitHub username
 # If your repo is named 'yourusername.github.io', leave baseurl empty
 # If your repo has a different name, set baseurl to "/repo-name"
-url: "https://yourusername.github.io"
+url: "https://cartridgeandcurrency.github.io"
 baseurl: ""
 
 # --- BLOG SETTINGS ---
