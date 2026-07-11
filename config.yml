@@ -1,0 +1,50 @@
+# ============================================================
+# _config.yml - THIS IS THE MAIN CONFIGURATION FILE FOR JEKYLL
+# Jekyll reads this file when building your site on GitHub Pages.
+# Change these values to match your site.
+# ============================================================
+
+# --- SITE IDENTITY ---
+# These variables are used throughout your site via {{ site.title }} etc.
+title: "Cartridge & Currency"
+description: "Finance guide & resources - Master your money like you mastered your favorite games."
+
+# --- URL SETTINGS ---
+# Replace 'yourusername' with your actual GitHub username
+# If your repo is named 'yourusername.github.io', leave baseurl empty
+# If your repo has a different name, set baseurl to "/repo-name"
+url: "https://yourusername.github.io"
+baseurl: ""
+
+# --- BLOG SETTINGS ---
+# This controls how article URLs look
+# Example: /articles/is-hostinger-worth-it/
+permalink: /articles/:title/
+
+# --- SOCIAL LINKS ---
+# Used in footer and video page
+youtube_channel_id: "UCHwUFNyln995EU3CG54Apkw"
+youtube_channel_url: "https://www.youtube.com/@CartridgeandCurrency"
+
+# --- BUILD SETTINGS ---
+# These tell Jekyll which folders to process
+# _posts is processed automatically; _includes/layouts are used by Liquid
+include:
+  - feed.json
+
+# Exclude these from processing (they're dev files, not site content)
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+
+# --- DEFAULTS ---
+# This sets default layout and category for blog posts automatically
+# So you don't have to add "layout: post" in every single article
+defaults:
+  - scope:
+      path: ""        # Apply to all files
+      type: "posts"   # But only to posts in _posts/
+    values:
+      layout: "post"  # Use the post.html layout by default
+      author: "369"   # Default author name
