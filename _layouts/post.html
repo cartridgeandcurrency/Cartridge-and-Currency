@@ -1,0 +1,52 @@
+<!-- ============================================================ -->
+<!-- post.html - LAYOUT FOR INDIVIDUAL ARTICLES                  -->
+<!-- This layout is used automatically for all files in _posts/  -->
+<!-- It extends the default layout (gets the browser frame,     -->
+<!-- nav, footer) and adds article-specific structure.            -->
+<!-- ============================================================ -->
+
+---
+layout: default
+---
+
+<!-- ARTICLE CONTAINER: Centers the article with some padding -->
+<div class="article-container">
+
+  <!-- ARTICLE TITLE: {{ page.title }} comes from front matter -->
+  <h1 class="article-title">{{ page.title }}</h1>
+
+  <!-- ARTICLE METADATA: Shows date and category as a tag -->
+  <div class="article-meta">
+    <!-- date filter formats the date nicely -->
+    <span class="article-date">{{ page.date | date: "%B %d, %Y" }}</span>
+    <!-- Display the category from front matter -->
+    <span class="article-category-tag">{{ page.category }}</span>
+  </div>
+
+  <!-- ARTICLE IMAGE: Optional - if you set 'image' in front matter -->
+  {% if page.image %}
+  <div class="article-image-wrap">
+    <img src="{{ page.image | relative_url }}" alt="{{ page.title }}" class="article-image">
+  </div>
+  {% endif %}
+
+  <!-- ARTICLE BODY: {{ content }} is the Markdown content converted to HTML -->
+  <!-- All the text you write in the .md file appears here -->
+  <div class="article-body">
+    {{ content }}
+  </div>
+
+  <!-- AFFILIATE DISCLOSURE: Required by FTC for affiliate links -->
+  <!-- This appears at the bottom of every article automatically -->
+  <div class="affiliate-disclosure">
+    <strong>Affiliate Disclosure:</strong> Some links in this article may be
+    affiliate links. This means I may earn a commission if you click through
+    and make a purchase, at no additional cost to you.
+  </div>
+
+  <!-- BACK BUTTON: Returns to articles page -->
+  <div class="article-nav">
+    <a href="{{ '/articles/' | relative_url }}" class="win95-button">◀ Back to Articles</a>
+  </div>
+
+</div>
