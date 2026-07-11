@@ -968,3 +968,60 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 7px;
   }
 }
+/* ============================================================ */
+/* NEW HOMEPAYLAYOUT STYLES                                     */
+/* ============================================================ */
+
+/* Video Grid for Homepage */
+.video-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+/* Simplified Resource Grid */
+.resource-grid-simple {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.resource-card-mini {
+  border: 2px solid var(--black);
+  background: var(--white);
+  padding: 10px;
+  text-align: center;
+  flex: 1;
+  min-width: 180px;
+  max-width: 250px;
+}
+
+.resource-placeholder {
+  font-size: 50px;
+  padding: 20px;
+  background: var(--bg-blue);
+  border: 1px solid var(--black);
+  margin-bottom: 8px;
+}
+
+.resource-card-title {
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+/* Full-width Newsletter Section */
+.sidebar-newsletter-full {
+  border: 2px solid var(--black);
+  background: var(--bg-blue);
+  padding: 12px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.view-all-btn {
+  display: inline-block;
+  margin-top: 10px;
+}
