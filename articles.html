@@ -1,0 +1,43 @@
+---
+layout: default
+title: Articles
+permalink: /articles/
+---
+
+<!-- ============================================================ -->
+<!-- articles.html - ARTICLE LISTING PAGE                        -->
+<!-- Shows all articles with search bar and category filters.     -->
+<!-- Uses JavaScript (main.js) to fetch feed.json and render.     -->
+<!-- ============================================================ -->
+
+<div class="page-header">
+  <h1 class="hero-title">Articles</h1>
+  <p class="hero-tagline">Browse all articles by category or search below.</p>
+</div>
+
+<!-- SEARCH BAR: Filter articles by keyword -->
+<div class="search-section">
+  <input type="text" id="article-search" class="win95-input search-input"
+         placeholder="Search articles..." onkeyup="filterArticles()">
+</div>
+
+<!-- CATEGORY FILTER BUTTONS -->
+<!-- Each button calls filterByCategory() in main.js -->
+<!-- To add a new category, just add a new button here -->
+<div class="category-filters" id="category-filters">
+  <button class="win95-button filter-btn active" onclick="filterByCategory('all')">All Articles</button>
+  <button class="win95-button filter-btn" onclick="filterByCategory('Free Resources')">Free Resources</button>
+  <button class="win95-button filter-btn" onclick="filterByCategory('Worth It or Waste of Money')">Worth It or Waste of Money</button>
+  <button class="win95-button filter-btn" onclick="filterByCategory('Beginner Guides')">Beginner Guides</button>
+  <button class="win95-button filter-btn" onclick="filterByCategory('Best Free Alternatives')">Best Free Alternatives</button>
+</div>
+
+<!-- ARTICLE GRID: Populated by JavaScript from feed.json -->
+<div class="article-grid" id="article-grid">
+  <p>Loading articles...</p>
+</div>
+
+<!-- If no articles match the search/filter, this shows -->
+<div class="no-results" id="no-results" style="display:none;">
+  <p>No articles found. Try a different search or category.</p>
+</div>
