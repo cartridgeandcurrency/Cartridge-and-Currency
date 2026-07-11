@@ -107,8 +107,15 @@ function filterByCategory(category) {
   const buttons = document.querySelectorAll('.filter-btn');
   buttons.forEach(btn => btn.classList.remove('active'));
 
-  // Find the button that was clicked and mark it active
-  event.currentTarget.classList.add('active');
+  // Try to mark the clicked button active. If event is available use it,
+  // otherwise fallback to finding the button that matches the category string.
+  if (typeof event !== 'undefined' && event.currentTarget) {
+    event.currentTarget.classList.add('active');
+  } else {
+    // find button whose text or data-category matches the requested category
+    const match = Array.from(buttons).find(b => b.textContent.trim() === category || b.getAttribute('data-category') === category);
+    if (match) match.classList.add('active');
+  }
 
   // Re-run the filter (which respects both search text and category)
   filterArticles();
@@ -117,9 +124,15 @@ function filterByCategory(category) {
 // --- PAGE INITIALIZATION ---
 // Runs when the page finishes loading
 document.addEventListener('DOMContentLoaded', function() {
-  // Only load articles if we're on the articles page
-  // (check if the article grid element exists)
-  if (document.getElementById('article-grid')) {
+  // Only load articles when we're on the dedicated Articles page.
+  // We check for the article grid AND at least one Articles-page-only control
+  // (search input or category filters). This prevents the script from
+  // injecting articles on the homepage where you render them server-side.
+  const grid = document.getElementById('article-grid');
+  const search = document.getElementById('article-search');
+  const categoryFilters = document.getElementById('category-filters');
+
+  if (grid && (search || categoryFilters)) {
     loadArticles();
   }
 });
