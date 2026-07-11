@@ -1,0 +1,42 @@
+---
+layout: default
+title: Videos
+permalink: /videos/
+---
+
+<!-- ============================================================ -->
+<!-- videos.html - YOUTUBE VIDEOS PAGE                           -->
+<!-- Uses the YouTube Data API to fetch 6 most recent videos.     -->
+<!-- Also shows a link to the YouTube channel.                    -->
+<!-- ============================================================ -->
+
+<div class="page-header">
+  <h1 class="hero-title">Videos</h1>
+  <p class="hero-tagline">Watch the latest from Cartridge &amp; Currency.</p>
+</div>
+
+<!-- CHANNEL LINK: Links to your YouTube channel -->
+<div class="video-channel-link">
+  <a href="{{ site.youtube_channel_url }}" target="_blank" class="win95-button yellow-btn">
+    Subscribe on YouTube ▶
+  </a>
+</div>
+
+<!-- VIDEO GRID: Populated by youtube.js -->
+<!-- The id="video-grid" is what JavaScript targets to insert video embeds -->
+<div class="video-grid" id="video-grid">
+  <p>Loading videos...</p>
+</div>
+
+<!-- ERROR MESSAGE: Shows if API fails or quota is exceeded -->
+<div class="api-error" id="video-error" style="display:none;">
+  <p>Unable to load videos right now. This could be due to:</p>
+  <ul>
+    <li>YouTube API daily quota exceeded (resets at midnight Pacific Time)</li>
+    <li>Invalid or expired API key</li>
+    <li>Network connection issues</li>
+  </ul>
+  <p>You can still visit our channel directly:
+    <a href="{{ site.youtube_channel_url }}" target="_blank">{{ site.youtube_channel_url }}</a>
+  </p>
+</div>
