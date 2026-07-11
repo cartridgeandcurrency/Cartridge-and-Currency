@@ -10,7 +10,7 @@
 // NOTE: The API key is visible in the source code on a static site.
 // To protect it, restrict the key to your domain only in Google Cloud Console:
 // Google Cloud Console > Credentials > API Key > Application restrictions > HTTP referrer
-const YOUTUBE_API_KEY = 'AIzaSyBnwu0aGo4LmcO9DjVFAw3nCYDcgR1o2e8';
+const YOUTUBE_API_KEY = 'AIzaSyBR9d_Dat3mcsRG6zWeD_Ho-49nJaqPQyY';
 const CHANNEL_ID = 'UCHwUFNyln995EU3CG54Apkw';
 const MAX_RESULTS = 6;  // Number of videos to show
 
