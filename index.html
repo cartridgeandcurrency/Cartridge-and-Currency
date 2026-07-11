@@ -4,8 +4,8 @@ title: Home
 ---
 
 <!-- ============================================================ -->
-<!-- index.html - HOMEPAGE (NEW LAYOUT)                           -->
-<!-- Order: Videos → Articles → Resources                         -->
+<!-- index.html - HOMEPAGE (WITH SIDEBAR)                         -->
+<!-- Order: Videos → Articles + Sidebar → Resources → Newsletter  -->
 <!-- ============================================================ -->
 
 <!-- HERO BANNER -->
@@ -15,7 +15,7 @@ title: Home
   <p class="hero-tagline">Master your money like you mastered your favorite games.</p>
 </div>
 
-<!-- SECTION 1: RECENT YOUTUBE VIDEOS (TOP) -->
+<!-- SECTION 1: RECENT YOUTUBE VIDEOS (TOP - FULL WIDTH) -->
 <section class="home-section">
   <h2 class="section-heading-yellow">Recent Videos</h2>
   <div class="video-preview-grid" id="home-video-grid">
@@ -24,44 +24,84 @@ title: Home
   <a href="{{ '/videos/' | relative_url }}" class="win95-button">Watch More Videos</a>
 </section>
 
-<!-- SECTION 2: FOUR RECENT ARTICLES (MIDDLE) -->
-<section class="home-section">
-  <h2 class="section-heading-yellow">Latest Updates</h2>
+<!-- TWO-COLUMN LAYOUT FOR ARTICLES + SIDEBAR -->
+<div class="home-layout">
 
-  {% for post in site.posts limit:4 %}
-  <article class="article-card">
-    {% if post.image %}
-    <div class="article-card-img">
-      <a href="{{ post.url | relative_url }}">
-        <img src="{{ post.image | relative_url }}" alt="{{ post.title }}">
+  <!-- LEFT COLUMN: Recent Articles -->
+  <div class="home-main">
+
+    <!-- RECENT ARTICLES SECTION -->
+    <section class="home-section">
+      <h2 class="section-heading-yellow">Latest Updates</h2>
+
+      {% for post in site.posts limit:4 %}
+      <article class="article-card">
+        {% if post.image %}
+        <div class="article-card-img">
+          <a href="{{ post.url | relative_url }}">
+            <img src="{{ post.image | relative_url }}" alt="{{ post.title }}">
+          </a>
+        </div>
+        {% endif %}
+
+        <div class="article-card-body">
+          <span class="article-badge">{{ post.category }}</span>
+          <span class="article-card-date">{{ post.date | date: "%b %d, %Y" }}</span>
+
+          <h3 class="article-card-title">
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          </h3>
+
+          <p class="article-card-excerpt">{{ post.excerpt | strip_html | truncatewords: 25 }}</p>
+
+          <a href="{{ post.url | relative_url }}" class="read-more">READ MORE &gt;</a>
+        </div>
+      </article>
+      {% endfor %}
+
+      <a href="{{ '/articles/' | relative_url }}" class="win95-button view-all-btn">View All Articles</a>
+    </section>
+
+  </div>
+
+  <!-- RIGHT SIDEBAR -->
+  <aside class="home-sidebar">
+
+    <!-- NEWSLETTER SIGNUP -->
+    <div class="sidebar-box sidebar-newsletter">
+      <h3 class="sidebar-heading-pink">Level Up!</h3>
+      <p>Join our newsletter for weekly financial cheat codes.</p>
+      <form class="newsletter-form" action="#" method="POST">
+        <input type="email" placeholder="ENTER EMAIL ADDRESS" class="win95-input" required>
+        <button type="submit" class="win95-button yellow-btn">Subscribe</button>
+      </form>
+    </div>
+
+    <!-- CATEGORIES LIST -->
+    <div class="sidebar-box sidebar-categories">
+      <h3 class="sidebar-heading-yellow">Categories</h3>
+      <ul class="category-list">
+        <li><a href="{{ '/articles/' | relative_url }}#Free Resources">Free Resources</a></li>
+        <li><a href="{{ '/articles/' | relative_url }}#Worth It or Waste of Money">Worth It or Waste of Money</a></li>
+        <li><a href="{{ '/articles/' | relative_url }}#Beginner Guides">Beginner Guides</a></li>
+        <li><a href="{{ '/articles/' | relative_url }}#Best Free Alternatives">Best Free Alternatives</a></li>
+      </ul>
+    </div>
+
+    <!-- AD BOX -->
+    <div class="sidebar-box sidebar-ad">
+      <h3 class="sidebar-heading-pink">Advertisement</h3>
+      <a href="https://www.hostinger.com/YOUR-AFFILIATE-ID" target="_blank" class="ad-link">
+        <div class="ad-button-pink">Hostinger<br>CLICK HERE</div>
       </a>
     </div>
-    {% endif %}
 
-    <div class="article-card-body">
-      <span class="article-badge">{{ post.category }}</span>
-      <span class="article-card-date">{{ post.date | date: "%b %d, %Y" }}</span>
+  </aside>
+</div>
 
-      <h3 class="article-card-title">
-        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-      </h3>
-
-      <p class="article-card-excerpt">{{ post.excerpt | strip_html | truncatewords: 25 }}</p>
-
-      <a href="{{ post.url | relative_url }}" class="read-more">READ MORE &gt;</a>
-    </div>
-  </article>
-  {% endfor %}
-
-  <a href="{{ '/articles/' | relative_url }}" class="win95-button view-all-btn">View All Articles</a>
-</section>
-
-<!-- SECTION 3: THREE FREE RESOURCES (BOTTOM) -->
+<!-- SECTION 2: THREE FREE RESOURCES (BOTTOM - FULL WIDTH) -->
 <section class="home-section">
   <h2 class="section-heading-yellow">Free Resources</h2>
-
-  <!-- You'll need to manually edit this section to show your actual resources -->
-  <!-- For now, this is a simplified version that links to the resources page -->
 
   <div class="resource-grid-simple">
     
@@ -90,13 +130,3 @@ title: Home
 
   <a href="{{ '/resources/' | relative_url }}" class="win95-button view-all-btn">View All Resources</a>
 </section>
-
-<!-- NEWSLETTER SIGNUP (SIDEBAR REPLACEMENT - RIGHT BELOW RESOURCES) -->
-<div class="sidebar-newsletter-full">
-  <h3 class="sidebar-heading-pink">Level Up!</h3>
-  <p>Join our newsletter for weekly financial cheat codes.</p>
-  <form class="newsletter-form" action="#" method="POST">
-    <input type="email" placeholder="ENTER EMAIL ADDRESS" class="win95-input" required>
-    <button type="submit" class="win95-button yellow-btn">Subscribe</button>
-  </form>
-</div>
