@@ -1,0 +1,137 @@
+<!-- ============================================================ -->
+<!-- default.html - THE MAIN PAGE WRAPPER                         -->
+<!-- Every page on your site uses this layout as its skeleton.    -->
+<!-- It creates the Netscape Navigator frame, animated cloud     -->
+<!-- background, navigation, and footer.                          -->
+<!-- ============================================================ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- META TAGS: Tell browsers and search engines about your page -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- PAGE TITLE: {{ page.title }} pulls the title from each page's front matter -->
+  <!-- If a page doesn't have a title, it falls back to the site title -->
+  <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
+
+  <!-- GOOGLE FONTS: Press Start 2P is the pixel font for headings, VT323 for body text -->
+  <!-- These load from Google's font servers - free to use -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+
+  <!-- STYLESHEET: Loads our main CSS file -->
+  <!-- The 'relative_url' filter ensures the path works regardless of baseurl setting -->
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+
+  <!-- FAVICON: Shows in browser tab (you can replace this with a custom icon later) -->
+  <link rel="icon" type="image/x-icon" href="{{ '/assets/img/favicon.ico' | relative_url }}">
+</head>
+<body>
+
+  <!-- ====================================================== -->
+  <!-- ANIMATED PIXEL CLOUD BACKGROUND                        -->
+  <!-- These divs are styled in CSS to look like pixel-art    -->
+  <!-- clouds that drift across the sky behind the browser    -->
+  <!-- window. Each one has a different animation speed.       -->
+  <!-- ====================================================== -->
+  <div class="cloud-sky">
+    <!-- Each cloud div gets a position class and animation delay -->
+    <div class="pixel-cloud cloud-1"></div>
+    <div class="pixel-cloud cloud-2"></div>
+    <div class="pixel-cloud cloud-3"></div>
+    <div class="pixel-cloud cloud-4"></div>
+    <div class="pixel-cloud cloud-5"></div>
+  </div>
+
+  <!-- ====================================================== -->
+  <!-- NETSCAPE NAVIGATOR BROWSER FRAME                       -->
+  <!-- This recreates the Windows 95 / Netscape window that   -->
+  <!-- wraps around all your website content.                 -->
+  <!-- ====================================================== -->
+  <div class="browser-window">
+
+    <!-- TITLE BAR: The blue bar at the top of a Win95 window -->
+    <div class="title-bar">
+      <span class="title-bar-text">Netscape Navigator - {{ site.title }} 90s Edition</span>
+      <!-- The minimize/maximize/close buttons are decorative -->
+      <div class="title-bar-controls">
+        <button class="title-bar-btn" aria-label="Minimize">_</button>
+        <button class="title-bar-btn" aria-label="Maximize">□</button>
+        <button class="title-bar-btn" aria-label="Close">X</button>
+      </div>
+    </div>
+
+    <!-- MENU BAR: File, Edit, View, etc. - Decorative only -->
+    <div class="menu-bar">
+      <span>File</span><span>Edit</span><span>View</span><span>Go</span>
+      <span>Bookmarks</span><span>Help</span>
+    </div>
+
+    <!-- TOOLBAR: Back, Forward, etc. - Decorative only -->
+    <div class="toolbar">
+      <button class="toolbar-btn">◀ Back</button>
+      <button class="toolbar-btn">Forward ▶</button>
+      <button class="toolbar-btn">Stop</button>
+      <button class="toolbar-btn">Refresh</button>
+      <button class="toolbar-btn">Home</button>
+    </div>
+
+    <!-- ADDRESS BAR: Shows the current page URL -->
+    <div class="address-bar">
+      <span class="address-label">Location:</span>
+      <input type="text" class="address-input" value="http://{{ site.title | downcase | replace: ' ', '' }}.com/" readonly>
+    </div>
+
+    <!-- DIVIDER LINE between address bar and content -->
+    <hr class="frame-divider">
+
+    <!-- ====================================================== -->
+    <!-- WEBSITE HEADER: Logo + Navigation tabs                 -->
+    <!-- This is inside the browser window but is YOUR site's   -->
+    <!-- header, not the browser chrome.                        -->
+    <!-- ====================================================== -->
+    <header class="site-header">
+      <div class="logo-section">
+        <h1 class="site-logo">{{ site.title }}</h1>
+        <p class="site-tagline">{{ site.description }}</p>
+      </div>
+      <!-- Include the navigation bar from _includes/nav.html -->
+      {% include nav.html %}
+    </header>
+
+    <!-- ====================================================== -->
+    <!-- MAIN CONTENT AREA                                      -->
+    <!-- {{ content }} is replaced with each page's actual       -->
+    <!-- content (homepage, articles list, etc.)                  -->
+    <!-- ====================================================== -->
+    <main class="content-area">
+      {{ content }}
+    </main>
+
+    <!-- ====================================================== -->
+    <!-- FOOTER                                                  -->
+    <!-- Include the footer from _includes/footer.html           -->
+    <!-- ====================================================== -->
+    {% include footer.html %}
+
+    <!-- STATUS BAR: The gray bar at the bottom of the window -->
+    <div class="status-bar">
+      <span class="status-item">Document: Done</span>
+      <span class="status-zoom">100%</span>
+    </div>
+
+  </div>
+  <!-- End of browser window -->
+
+  <!-- ====================================================== -->
+  <!-- JAVASCRIPT FILES                                        -->
+  <!-- Loaded at the bottom so HTML renders first (faster)     -->
+  <!-- defer means they run after the page is parsed           -->
+  <!-- ====================================================== -->
+  <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+  <script src="{{ '/assets/js/youtube.js' | relative_url }}"></script>
+
+</body>
+</html>
