@@ -1,0 +1,120 @@
+---
+layout: default
+title: Home
+---
+
+<!-- ============================================================ -->
+<!-- index.html - HOMEPAGE                                       -->
+<!-- This page combines previews of all other pages:             -->
+<!-- recent articles, recent videos, and featured resources.      -->
+<!-- ============================================================ -->
+
+<!-- HERO BANNER: The big title area at the top -->
+<div class="hero-banner">
+  <h1 class="hero-title">CARTRIDGE &amp; CURRENCY</h1>
+  <p class="hero-subtitle">FINANCE GUIDE &amp; RESOURCES</p>
+  <p class="hero-tagline">Master your money like you mastered your favorite games.</p>
+</div>
+
+<!-- TWO-COLUMN LAYOUT: Main content left, sidebar right -->
+<div class="home-layout">
+
+  <!-- LEFT COLUMN: Recent articles and resources -->
+  <div class="home-main">
+
+    <!-- RECENT ARTICLES SECTION -->
+    <!-- Jekyll loops through posts, limits to 4 most recent -->
+    <section class="home-section">
+      <h2 class="section-heading-yellow">Latest Updates</h2>
+
+      {% for post in site.posts limit:4 %}
+      <article class="article-card">
+        <!-- Thumbnail image from front matter -->
+        {% if post.image %}
+        <div class="article-card-img">
+          <a href="{{ post.url | relative_url }}">
+            <img src="{{ post.image | relative_url }}" alt="{{ post.title }}">
+          </a>
+        </div>
+        {% endif %}
+
+        <div class="article-card-body">
+          <!-- Category badge -->
+          <span class="article-badge">{{ post.category }}</span>
+          <!-- New badge if article is less than 7 days old -->
+          {% assign days_old = site.time | date: "%s" | minus: post.date | date: "%s" | divided_by: 86400 %}
+          {% if days_old < 7 %}
+          <span class="article-new">NEW!</span>
+          {% endif %}
+
+          <!-- Date -->
+          <span class="article-card-date">{{ post.date | date: "%b %d, %Y" }}</span>
+
+          <!-- Title as link -->
+          <h3 class="article-card-title">
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          </h3>
+
+          <!-- Excerpt (first paragraph from markdown) -->
+          <p class="article-card-excerpt">{{ post.excerpt | strip_html | truncatewords: 25 }}</p>
+
+          <!-- Read more link -->
+          <a href="{{ post.url | relative_url }}" class="read-more">READ MORE &gt;</a>
+        </div>
+      </article>
+      {% endfor %}
+
+      <!-- Link to all articles -->
+      <a href="{{ '/articles/' | relative_url }}" class="win95-button view-all-btn">View All Articles</a>
+    </section>
+
+  </div>
+
+  <!-- RIGHT SIDEBAR: Newsletter, categories, ad -->
+  <aside class="home-sidebar">
+
+    <!-- NEWSLETTER SIGNUP -->
+    <div class="sidebar-box sidebar-newsletter">
+      <h3 class="sidebar-heading-pink">Level Up!</h3>
+      <p>Join our newsletter for weekly financial cheat codes.</p>
+      <form class="newsletter-form" action="#" method="POST">
+        <input type="email" placeholder="ENTER EMAIL ADDRESS" class="win95-input" required>
+        <button type="submit" class="win95-button yellow-btn">Subscribe</button>
+      </form>
+    </div>
+
+    <!-- CATEGORIES LIST -->
+    <!-- These link to the articles page filtered by category -->
+    <div class="sidebar-box sidebar-categories">
+      <h3 class="sidebar-heading-yellow">Categories</h3>
+      <ul class="category-list">
+        <!-- Each link goes to articles.html#category-name -->
+        <li><a href="{{ '/articles/' | relative_url }}#Free Resources">Income Generation</a></li>
+        <li><a href="{{ '/articles/' | relative_url }}#Worth It or Waste of Money">Worth It or Waste of Money</a></li>
+        <li><a href="{{ '/articles/' | relative_url }}#Free Resources">Free Resources</a></li>
+        <li><a href="{{ '/articles/' | relative_url }}#Beginner Guides">Beginner Guides</a></li>
+        <li><a href="{{ '/articles/' | relative_url }}#Best Free Alternatives">Best Free Alternatives</a></li>
+      </ul>
+    </div>
+
+    <!-- AD / AFFILIATE PREVIEW BOX -->
+    <div class="sidebar-box sidebar-ad">
+      <h3 class="sidebar-heading-pink">Advertisement</h3>
+      <!-- Hostinger affiliate link placeholder - replace URL with your actual affiliate link -->
+      <a href="https://www.hostinger.com/YOUR-AFFILIATE-ID" target="_blank" class="ad-link">
+        <div class="ad-button-pink">Hostinger<br>CLICK HERE</div>
+      </a>
+    </div>
+
+  </aside>
+</div>
+
+<!-- FEATURED VIDEOS SECTION (full width) -->
+<section class="home-section home-videos">
+  <h2 class="section-heading-yellow">Recent Videos</h2>
+  <!-- This div gets populated by youtube.js -->
+  <div class="video-preview-grid" id="home-video-grid">
+    <p>Loading videos...</p>
+  </div>
+  <a href="{{ '/videos/' | relative_url }}" class="win95-button">Watch More Videos</a>
+</section>
