@@ -1,0 +1,77 @@
+---
+layout: default
+title: Free Resources
+permalink: /resources/
+---
+
+<!-- ============================================================ -->
+<!-- resources.html - FREE DOWNLOADS PAGE                        -->
+<!-- Cards for each resource with download buttons.              -->
+<!-- Supports both ZIP files hosted in repo AND external links.    -->
+<!-- To add a new resource, just copy a resource-card block.       -->
+<!-- ============================================================ -->
+
+<div class="page-header">
+  <h1 class="hero-title">Free Resources</h1>
+  <p class="hero-tagline">Download free templates, themes, and tools.</p>
+</div>
+
+<div class="resource-grid">
+
+  <!-- RESOURCE CARD 1: ZIP file hosted in repo -->
+  <!-- Copy this block to add a new downloadable resource -->
+  <div class="resource-card">
+    <div class="resource-card-img">
+      <!-- Placeholder image - replace with actual thumbnail -->
+      <div class="resource-placeholder">📦</div>
+    </div>
+    <div class="resource-card-body">
+      <h3 class="resource-card-title">Notion Budget Template</h3>
+      <p class="resource-card-desc">A free Notion template for tracking monthly income and expenses.</p>
+      <!-- DOWNLOAD LINK: Points to a file in /assets/downloads/ -->
+      <!-- Just upload your .zip file to that folder and update the filename -->
+      <a href="{{ '/assets/downloads/notion-budget-template.zip' | relative_url }}"
+         download class="win95-button yellow-btn">Download</a>
+    </div>
+  </div>
+
+  <!-- RESOURCE CARD 2: External link -->
+  <div class="resource-card">
+    <div class="resource-card-img">
+      <div class="resource-placeholder">🔗</div>
+    </div>
+    <div class="resource-card-body">
+      <h3 class="resource-card-title">Free Spreadsheet Template</h3>
+      <p class="resource-card-desc">Google Sheets template hosted on Google Drive.</p>
+      <!-- EXTERNAL LINK: Opens in new tab -->
+      <a href="https://drive.google.com/YOUR-LINK-HERE"
+         target="_blank" class="win95-button yellow-btn">Open Link</a>
+    </div>
+  </div>
+
+  <!-- RESOURCE CARD 3: Video resource -->
+  <div class="resource-card">
+    <div class="resource-card-img">
+      <div class="resource-placeholder">🎥</div>
+    </div>
+    <div class="resource-card-body">
+      <h3 class="resource-card-title">Budgeting Video Course</h3>
+      <p class="resource-card-desc">Free YouTube playlist covering budgeting basics for beginners.</p>
+      <!-- YOUTUBE PLAYLIST LINK -->
+      <a href="{{ site.youtube_channel_url }}"
+         target="_blank" class="win95-button yellow-btn">Watch Videos</a>
+    </div>
+  </div>
+
+  <!-- RESOURCE CARD 4: Placeholder for future -->
+  <div class="resource-card">
+    <div class="resource-card-img">
+      <div class="resource-placeholder">📁</div>
+    </div>
+    <div class="resource-card-body">
+      <h3 class="resource-card-title">More Coming Soon</h3>
+      <p class="resource-card-desc">New resources added regularly. Check back soon!</p>
+    </div>
+  </div>
+
+</div>
